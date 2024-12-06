@@ -87,7 +87,7 @@ const Footer: React.FC<FooterProps> = ({ currentYear = 2024 }) => {
         {/* Bottom Bar */}
         <div className="flex flex-col md:flex-row md:items-center justify-between mt-16 pt-8 border-t border-black/10">
           <div className="text-sm text-gray-600">
-            © {currentYear} Template by Temlis
+            © {currentYear} All rights reserved. Fitness™
           </div>
           <div className="flex gap-6 mt-4 md:mt-0">
             <a href="#" className="text-sm hover:opacity-70">
