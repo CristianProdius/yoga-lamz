@@ -8,7 +8,7 @@ import BookPromoSection from "@/components/Promo";
 import ReviewsSection from "@/components/Reviews";
 import ServicesSection from "@/components/Services";
 import Statistics from "@/components/Statistics";
-import OurTeam from "@/components/Team";
+import InstructorSection from "@/components/Team";
 
 export default function Home() {
   return (
@@ -17,7 +17,7 @@ export default function Home() {
       <Hero />
       <Statistics />
       <ServicesSection />
-      <OurTeam />
+      <InstructorSection />
       <ReviewsSection />
       <BookPromoSection />
       <ContactSection />
