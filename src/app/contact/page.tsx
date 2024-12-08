@@ -59,8 +59,9 @@ const ContactPage = () => {
               </span>
             </h1>
             <p className="text-xl text-[#1a2e1a]/80 leading-relaxed">
-              Whether you're interested in our retreats, have questions about
-              the book, or simply want to connect, I'd love to hear from you.
+              Whether you&apos;re interested in our retreats, have questions
+              about the book, or simply want to connect, I&apos;d love to hear
+              from you.
             </p>
           </motion.div>
         </motion.div>

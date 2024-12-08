@@ -96,8 +96,9 @@ const BookPage = () => {
             variants={fadeInUp}
             className="text-xl text-[#1a2e1a]/80 leading-relaxed italic"
           >
-            "Explore, taste and feel the carefreeness of vintage summer days in
-            a small family village in the island of Crete during the 1980s."
+            &apos;Explore, taste and feel the carefreeness of vintage summer
+            days in a small family village in the island of Crete during the
+            1980s.&apos;
           </motion.p>
 
           <motion.div

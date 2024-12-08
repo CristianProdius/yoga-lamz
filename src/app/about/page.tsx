@@ -54,7 +54,7 @@ const AboutPage = () => {
         >
           <motion.div variants={fadeInUp} className="space-y-6">
             <h2 className="text-3xl md:text-4xl font-serif text-[#1a2e1a]">
-              Hi, I'm Agapi
+              Hi, I&apos;m Agapi
             </h2>
             <p className="text-lg text-[#1a2e1a]/80 leading-relaxed">
               Born and raised on the stunning island of Crete, I grew up in a
@@ -126,11 +126,11 @@ const AboutPage = () => {
             <p className="text-lg text-[#1a2e1a]/80 leading-relaxed">
               A foot injury in my twenties led me to step away from pointe shoes
               and embrace yoga and Pilates as a path to well-being. Practicing
-              yoga in nature—beneath Crete's warm sun and by the blue
+              yoga in nature—beneath Crete&apos;s warm sun and by the blue
               sea—transformed my journey.
             </p>
             <p className="text-lg text-[#1a2e1a]/80 leading-relaxed">
-              This connection to the island's energy inspired me to create
+              This connection to the island&apos;s energy inspired me to create
               Cretan Earth Yoga and Meditation Retreats, where I share the magic
               of balance, movement, and inner peace.
             </p>
@@ -154,9 +154,9 @@ const AboutPage = () => {
             <p className="text-lg text-white/80 leading-relaxed">
               I also believe in the power of storytelling to connect and
               inspire. My book, August Fifteenth, published in 2019, recounts my
-              childhood in Crete during the '80s—summers at my grandmother's
-              cottage, family gatherings, endless cooking, and cherished
-              traditions.
+              childhood in Crete during the &apos;80s—summers at my
+              grandmother&apos;s cottage, family gatherings, endless cooking,
+              and cherished traditions.
             </p>
             <motion.a
               href="https://cycladic.gr/en/product/august-fifteenth-english-edition"
