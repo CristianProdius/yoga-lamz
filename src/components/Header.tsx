@@ -1,11 +1,10 @@
 "use client";
 import Link from "next/link";
-import Image from "next/image";
 import { useState, useEffect } from "react";
 
 export default function Header() {
   const [isScrolled, setIsScrolled] = useState(false);
-  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [isMobileMenuOpen] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -17,7 +16,7 @@ export default function Header() {
 
   return (
     <header
-      className={`fixed inset-x-0 transition-all duration-300 z-50 w-screen ${
+      className={`fixed inset-x-0 transition-all duration-300 z-40 w-screen ${
         isScrolled
           ? "py-4 bg-[#f4f6ef]/95 backdrop-blur-md shadow-lg"
           : "py-6 bg-[#f4f6ef]/90 backdrop-blur-sm"
@@ -46,10 +45,10 @@ export default function Header() {
           ))}
         </nav>
 
-        <div className="flex items-center gap-3 sm:gap-6">
+        {/*<div className="flex items-center gap-3 sm:gap-6">
           <button className="hidden sm:flex items-center bg-[#e8ebe3] hover:bg-[#dfe2d8] transition-all duration-300 px-5 py-2.5 rounded-full hover:shadow-md active:scale-95">
             <Image
-              src="/login.png"
+              src="/login.webp"
               alt="Profile"
               width={24}
               height={32}
@@ -80,7 +79,7 @@ export default function Header() {
               />
             </svg>
           </button>
-        </div>
+        </div>*/}
       </div>
 
       <div
@@ -98,16 +97,16 @@ export default function Header() {
               {item}
             </Link>
           ))}
-          <button className="mt-3 w-full flex items-center justify-center bg-[#e8ebe3] hover:bg-[#dfe2d8] transition-all duration-300 px-5 py-2.5 rounded-lg sm:hidden">
+          {/* <button className="mt-3 w-full flex items-center justify-center bg-[#e8ebe3] hover:bg-[#dfe2d8] transition-all duration-300 px-5 py-2.5 rounded-lg sm:hidden">
             <Image
-              src="/login.png"
+              src="/login.webp"
               alt="Profile"
               width={24}
               height={24}
               className="rounded-full"
             />
             <span className="ml-2 text-[15px] font-medium">Log In</span>
-          </button>
+          </button>*/}
         </nav>
       </div>
     </header>

@@ -1,6 +1,7 @@
 "use client";
 import { FC, FormEvent, useState } from "react";
 import { motion } from "framer-motion";
+import Link from "next/link";
 
 interface FooterProps {
   currentYear?: number;
@@ -93,68 +94,94 @@ const Footer: FC<FooterProps> = ({ currentYear = 2024 }) => {
             </p>
           </motion.div>
 
-          {/* Experience Links */}
-          <motion.div variants={fadeInUp}>
-            <h3 className="text-xl font-medium mb-8 text-[#1B392A]">
-              Experiences
-            </h3>
-            <motion.ul variants={staggerChildren} className="space-y-4">
-              {[
-                "Yoga Retreats",
-                "Book Reading",
-                "Meditation Sessions",
-                "Cretan Culture",
-              ].map((item) => (
-                <motion.li key={item} variants={fadeInUp}>
-                  <motion.a
-                    href="#"
-                    onMouseEnter={() => setIsHovered(item)}
-                    onMouseLeave={() => setIsHovered("")}
-                    className="relative inline-block text-lg text-gray-700 hover:text-[#1B392A] 
-                             transition-colors duration-300"
-                  >
-                    {item}
-                    <span
-                      className={`absolute bottom-0 left-0 w-full h-0.5 bg-[#1B392A] transform origin-left
-                                   transition-transform duration-300 ${
-                                     isHovered === item
-                                       ? "scale-x-100"
-                                       : "scale-x-0"
-                                   }`}
-                    />
-                  </motion.a>
-                </motion.li>
-              ))}
-            </motion.ul>
-          </motion.div>
-
+          <motion.div></motion.div>
           {/* Connect Links */}
           <motion.div variants={fadeInUp}>
             <h3 className="text-xl font-medium mb-8 text-[#1B392A]">Connect</h3>
             <motion.ul variants={staggerChildren} className="space-y-4">
-              {["Book Purchase", "Instagram", "Contact", "About Agapi"].map(
-                (item) => (
-                  <motion.li key={item} variants={fadeInUp}>
-                    <motion.a
-                      href="#"
-                      onMouseEnter={() => setIsHovered(item)}
-                      onMouseLeave={() => setIsHovered("")}
-                      className="relative inline-block text-lg text-gray-700 hover:text-[#1B392A] 
+              <motion.li key="Book Purchase" variants={fadeInUp}>
+                <Link href="/book">
+                  <span
+                    onMouseEnter={() => setIsHovered("Book Purchase")}
+                    onMouseLeave={() => setIsHovered("")}
+                    className="relative inline-block text-lg text-gray-700 hover:text-[#1B392A] 
                              transition-colors duration-300"
-                    >
-                      {item}
-                      <span
-                        className={`absolute bottom-0 left-0 w-full h-0.5 bg-[#1B392A] transform origin-left
+                  >
+                    Book Purchase
+                    <span
+                      className={`absolute bottom-0 left-0 w-full h-0.5 bg-[#1B392A] transform origin-left
                                    transition-transform duration-300 ${
-                                     isHovered === item
+                                     isHovered === "Book Purchase"
                                        ? "scale-x-100"
                                        : "scale-x-0"
                                    }`}
-                      />
-                    </motion.a>
-                  </motion.li>
-                )
-              )}
+                    />
+                  </span>
+                </Link>
+              </motion.li>
+              <motion.li key="Instagram" variants={fadeInUp}>
+                <Link
+                  href="https://www.instagram.com/agapi_kefalogianni/"
+                  passHref
+                >
+                  <span
+                    onMouseEnter={() => setIsHovered("Instagram")}
+                    onMouseLeave={() => setIsHovered("")}
+                    className="relative inline-block text-lg text-gray-700 hover:text-[#1B392A] 
+                             transition-colors duration-300"
+                  >
+                    Instagram
+                    <span
+                      className={`absolute bottom-0 left-0 w-full h-0.5 bg-[#1B392A] transform origin-left
+                                   transition-transform duration-300 ${
+                                     isHovered === "Instagram"
+                                       ? "scale-x-100"
+                                       : "scale-x-0"
+                                   }`}
+                    />
+                  </span>
+                </Link>
+              </motion.li>
+              <motion.li key="Contact" variants={fadeInUp}>
+                <Link href="/contact">
+                  <span
+                    onMouseEnter={() => setIsHovered("Contact")}
+                    onMouseLeave={() => setIsHovered("")}
+                    className="relative inline-block text-lg text-gray-700 hover:text-[#1B392A] 
+                             transition-colors duration-300"
+                  >
+                    Contact
+                    <span
+                      className={`absolute bottom-0 left-0 w-full h-0.5 bg-[#1B392A] transform origin-left
+                                   transition-transform duration-300 ${
+                                     isHovered === "Contact"
+                                       ? "scale-x-100"
+                                       : "scale-x-0"
+                                   }`}
+                    />
+                  </span>
+                </Link>
+              </motion.li>
+              <motion.li key="About Agapi" variants={fadeInUp}>
+                <Link href="/about">
+                  <span
+                    onMouseEnter={() => setIsHovered("About Agapi")}
+                    onMouseLeave={() => setIsHovered("")}
+                    className="relative inline-block text-lg text-gray-700 hover:text-[#1B392A] 
+                             transition-colors duration-300"
+                  >
+                    About Agapi
+                    <span
+                      className={`absolute bottom-0 left-0 w-full h-0.5 bg-[#1B392A] transform origin-left
+                                   transition-transform duration-300 ${
+                                     isHovered === "About Agapi"
+                                       ? "scale-x-100"
+                                       : "scale-x-0"
+                                   }`}
+                    />
+                  </span>
+                </Link>
+              </motion.li>
             </motion.ul>
           </motion.div>
         </div>
@@ -169,25 +196,57 @@ const Footer: FC<FooterProps> = ({ currentYear = 2024 }) => {
             © {currentYear} All rights reserved. The Cretan Earth™
           </div>
           <div className="flex flex-col md:flex-row gap-4 md:gap-8 mt-6 md:mt-0 text-center md:text-left">
-            {["Privacy Policy", "Terms", "Back to top"].map((item) => (
-              <motion.a
-                key={item}
-                href="#"
-                onMouseEnter={() => setIsHovered(item)}
+            {/* <Link href="/privacy-policy">
+              <span
+                onMouseEnter={() => setIsHovered("Privacy Policy")}
                 onMouseLeave={() => setIsHovered("")}
                 className="relative text-gray-600 hover:text-[#1B392A] transition-colors duration-300"
               >
-                {item}
+                Privacy Policy
                 <span
                   className={`absolute bottom-0 left-0 w-full h-0.5 bg-[#1B392A] transform origin-left
                                transition-transform duration-300 ${
-                                 isHovered === item
+                                 isHovered === "Privacy Policy"
                                    ? "scale-x-100"
                                    : "scale-x-0"
                                }`}
                 />
-              </motion.a>
-            ))}
+              </span>
+            </Link>
+            <Link href="/terms">
+              <span
+                onMouseEnter={() => setIsHovered("Terms")}
+                onMouseLeave={() => setIsHovered("")}
+                className="relative text-gray-600 hover:text-[#1B392A] transition-colors duration-300"
+              >
+                Terms
+                <span
+                  className={`absolute bottom-0 left-0 w-full h-0.5 bg-[#1B392A] transform origin-left
+                               transition-transform duration-300 ${
+                                 isHovered === "Terms"
+                                   ? "scale-x-100"
+                                   : "scale-x-0"
+                               }`}
+                />
+              </span>
+            </Link>*/}
+            <Link href="#">
+              <span
+                onMouseEnter={() => setIsHovered("Back to top")}
+                onMouseLeave={() => setIsHovered("")}
+                className="relative text-gray-600 hover:text-[#1B392A] transition-colors duration-300"
+              >
+                Back to top
+                <span
+                  className={`absolute bottom-0 left-0 w-full h-0.5 bg-[#1B392A] transform origin-left
+                               transition-transform duration-300 ${
+                                 isHovered === "Back to top"
+                                   ? "scale-x-100"
+                                   : "scale-x-0"
+                               }`}
+                />
+              </span>
+            </Link>
           </div>
         </motion.div>
       </motion.div>

@@ -171,7 +171,7 @@ const ContactPage = () => {
             <motion.div variants={fadeInUp} className="space-y-12">
               <div className="relative aspect-[4/3] rounded-3xl overflow-hidden shadow-2xl">
                 <Image
-                  src="/crete-yoga.jpeg" // Replace with actual image
+                  src="/crete-yoga.webp" // Replace with actual image
                   alt="Cretan Landscape"
                   fill
                   className="object-cover"

@@ -1,7 +1,7 @@
 "use client";
 
 import { motion, PanInfo, useAnimation, useDragControls } from "framer-motion";
-import { FC, useEffect, useRef, useState } from "react";
+import { FC, useEffect, useRef, useState, useCallback } from "react";
 
 interface Review {
   author: string;
@@ -61,35 +61,35 @@ const ReviewsSection: FC = () => {
       username: "@staking",
       content: "I started going to the gym but had no idea what I was doing.",
       date: "22.03.2021",
-      avatar: "/login.png",
+      avatar: "/login.webp",
     },
     {
       author: "Jamie Kokot",
       username: "@staking",
       content: "I started going to the gym but had no idea what I was doing.",
       date: "22.03.2021",
-      avatar: "/login.png",
+      avatar: "/login.webp",
     },
     {
       author: "Jamie Kokot",
       username: "@staking",
       content: "I started going to the gym but had no idea what I was doing.",
       date: "22.03.2021",
-      avatar: "/login.png",
+      avatar: "/login.webp",
     },
     {
       author: "Jamie Kokot",
       username: "@staking",
       content: "I started going to the gym but had no idea what I was doing.",
       date: "22.03.2021",
-      avatar: "/login.png",
+      avatar: "/login.webp",
     },
     {
       author: "Jamie Kokot",
       username: "@staking",
       content: "I started going to the gym but had no idea what I was doing.",
       date: "22.03.2021",
-      avatar: "/login.png",
+      avatar: "/login.webp",
     },
   ];
 
@@ -103,18 +103,21 @@ const ReviewsSection: FC = () => {
     };
   };
 
-  const animateToIndex = (index: number) => {
-    if (!scrollRef.current) return;
-    const xOffset = -(CARD_WIDTH * index);
-    controls.start({
-      x: xOffset,
-      transition: {
-        duration: 0.8,
-        ease: "easeInOut",
-        type: "tween",
-      },
-    });
-  };
+  const animateToIndex = useCallback(
+    (index: number) => {
+      if (!scrollRef.current) return;
+      const xOffset = -(CARD_WIDTH * index);
+      controls.start({
+        x: xOffset,
+        transition: {
+          duration: 0.8,
+          ease: "easeInOut",
+          type: "tween",
+        },
+      });
+    },
+    [controls]
+  );
 
   const handleDragStart = () => {
     setIsDragging(true);
@@ -154,7 +157,7 @@ const ReviewsSection: FC = () => {
     }
 
     return () => clearInterval(interval);
-  }, [currentIndex, isDragging, autoPlay]);
+  }, [currentIndex, isDragging, autoPlay, animateToIndex, reviews.length]);
 
   return (
     <section className="bg-[#f4f6ef] py-16 md:py-24 overflow-hidden">
@@ -165,7 +168,7 @@ const ReviewsSection: FC = () => {
           animate={{ y: 0, opacity: 1 }}
           transition={{ duration: 0.6 }}
         >
-          Over 200+ reviews from our clients
+          People that did our retreats
         </motion.h2>
 
         <div className="relative">

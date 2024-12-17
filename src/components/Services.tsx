@@ -4,15 +4,10 @@ import { HeartIcon, BookOpenIcon, SunIcon } from "@heroicons/react/24/outline";
 import { motion } from "framer-motion";
 
 const ServicesSection: React.FC = () => {
-  const fadeInUp = {
-    initial: { opacity: 0, y: 20 },
-    animate: { opacity: 1, y: 0 },
-    transition: { duration: 0.5 },
-  };
-
   return (
     <section className="bg-[#f4f6ef] py-16 sm:py-24 lg:py-32 overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        {/*
         <div className="flex flex-col lg:flex-row lg:justify-between lg:items-start gap-8 mb-16 lg:mb-24">
           <motion.div className="max-w-2xl" {...fadeInUp}>
             <h2 className="text-4xl md:text-5xl lg:text-[56px] text-[#0A2012] font-serif leading-tight">
@@ -30,7 +25,7 @@ const ServicesSection: React.FC = () => {
           >
             Book Your Retreat
           </motion.button>
-        </div>
+        </div>*/}
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 lg:gap-12 xl:gap-24">
           {services.map((service, index) => (

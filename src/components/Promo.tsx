@@ -53,16 +53,6 @@ const BookPromoSection: FC = () => {
                 >
                   Purchase Book
                 </motion.a>
-                <motion.button
-                  whileHover={{
-                    scale: 1.05,
-                    backgroundColor: "rgba(26, 46, 26, 0.05)",
-                  }}
-                  whileTap={{ scale: 0.95 }}
-                  className="border-2 border-[#1a2e1a] text-[#1a2e1a] px-8 py-4 rounded-full text-lg font-semibold transition-all duration-300"
-                >
-                  Read Preview
-                </motion.button>
               </div>
             </motion.div>
 
@@ -76,7 +66,7 @@ const BookPromoSection: FC = () => {
             >
               <div className="relative w-full max-w-[500px] mx-auto perspective-1000">
                 <motion.img
-                  src="/Book.png" // Replace with your book image
+                  src="/Book.webp" // Replace with your book image
                   alt="August Fifteenth - A Journey Through Cretan Summers"
                   className="w-full h-auto rounded-lg"
                   animate={{
@@ -93,13 +83,6 @@ const BookPromoSection: FC = () => {
                   whileHover={{ scale: 1.1 }}
                 >
                   English Edition
-                </motion.div>
-                <motion.div
-                  className="absolute -top-4 -left-4 bg-[#f3d42e] text-[#1a2e1a] py-3 px-6 rounded-full font-bold shadow-xl"
-                  animate={{ rotate: [-12, -8, -12] }}
-                  transition={{ duration: 4, repeat: Infinity }}
-                >
-                  Published 2019
                 </motion.div>
               </div>
             </motion.div>

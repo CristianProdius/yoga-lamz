@@ -77,7 +77,7 @@ const AboutPage = () => {
           >
             <div className="aspect-[3/4] rounded-3xl overflow-hidden shadow-2xl max-h-[550px]">
               <Image
-                src="/agapi-profile.jpeg"
+                src="/agapi-profile.webp"
                 alt="Agapi Kefalogianni"
                 fill
                 className="object-cover rounded-3xl"
@@ -100,7 +100,7 @@ const AboutPage = () => {
             <div className="grid grid-cols-2 gap-4">
               <div className="aspect-square rounded-2xl overflow-hidden shadow-xl relative">
                 <Image
-                  src="/crete-nature.jpeg" // Replace with actual image
+                  src="/crete-nature.webp" // Replace with actual image
                   alt="Yoga in Nature"
                   fill
                   className="object-cover"
@@ -108,7 +108,7 @@ const AboutPage = () => {
               </div>
               <div className="aspect-square rounded-2xl overflow-hidden shadow-xl relative">
                 <Image
-                  src="/crete-meditation.jpeg" // Replace with actual image
+                  src="/crete-meditation.webp" // Replace with actual image
                   alt="Cretan Landscape"
                   fill
                   className="object-cover"
@@ -173,7 +173,7 @@ const AboutPage = () => {
           <motion.div variants={fadeInUp}>
             <div className="aspect-[3/4] rounded-3xl overflow-hidden shadow-2xl relative">
               <Image
-                src="/agapi-photo.jpeg" // Replace with actual image
+                src="/agapi-photo.webp" // Replace with actual image
                 alt="August Fifteenth Book Cover"
                 fill
                 className="object-cover"

@@ -3,11 +3,8 @@ import Footer from "@/components/Footer";
 import Header from "@/components/Header";
 import { motion } from "framer-motion";
 import Image from "next/image";
-import { useState } from "react";
 
 const RetreatsPage = () => {
-  const [selectedDate, setSelectedDate] = useState<string | null>(null);
-
   const fadeInUp = {
     hidden: { opacity: 0, y: 20 },
     visible: { opacity: 1, y: 0 },
@@ -21,12 +18,46 @@ const RetreatsPage = () => {
     },
   };
 
-  const retreatDates = [
-    { date: "June 15-16, 2024", availability: "Limited Spots" },
-    { date: "July 20-21, 2024", availability: "Available" },
-    { date: "August 17-18, 2024", availability: "Available" },
-    { date: "September 14-15, 2024", availability: "Available" },
-  ];
+  const retreatProgram = {
+    saturday: [
+      {
+        time: "8:30 – 9:30",
+        activity: "Fresh & Tone Full Body Yoga + Grace & Gratitude Meditation",
+        location: "Yoga Pavilion",
+        description:
+          "Disconnect with an early-morning session in our garden's exhilarating presence - a revitalizing retreat experience.",
+      },
+      {
+        time: "18:00 – 19:00",
+        activity: "Calming Down Yoga + Blissful Sunset Meditation",
+        location: "By the Sea",
+        description:
+          "Optional workshops to reflect and recoup with restorative exercise.",
+      },
+    ],
+    sunday: [
+      {
+        time: "8:30 – 9:30",
+        activity: "Strength & Balance Yoga Glow + Blissful Morning Meditation",
+        location: "Yoga Pavilion",
+        description: "A perfect workout suitable for all levels and ages.",
+      },
+      {
+        time: "14:00 – 15:00",
+        activity: "Cooking Lesson & Book Reading",
+        location: "Mouries Cretan Restaurant",
+        description:
+          "Join our Executive Chef for a cooking lesson using locally-sourced ingredients and herbs from our organic garden, followed by a book reading session with Agapi from 'August Fifteenth'.",
+      },
+      {
+        time: "18:00 – 19:00",
+        activity: "Flow Evening Yoga + Sunset Meditation",
+        location: "By the Sea",
+        description:
+          "Complete your retreat weekend feeling refreshed, inspired, and motivated.",
+      },
+    ],
+  };
 
   const retreatHighlights = [
     {
@@ -181,7 +212,7 @@ const RetreatsPage = () => {
                   transition={{ duration: 0.3 }}
                 >
                   <Image
-                    src={`/crete-${name}.jpeg`} // Replace with actual images
+                    src={`/crete-${name}.webp`} // Replace with actual images
                     alt={`Cretan ${
                       name.charAt(0).toUpperCase() + name.slice(1)
                     } Scene`}
@@ -209,43 +240,38 @@ const RetreatsPage = () => {
             className="text-center max-w-3xl mx-auto mb-16"
           >
             <h2 className="text-3xl md:text-4xl font-serif mb-6">
-              Join the Experience
+              Program Schedule
             </h2>
-            <p className="text-xl text-white/80 leading-relaxed">
-              Find your flow and harness balance during a 2-day immersive yoga &
-              meditation workshop, complemented by book reading & cooking lesson
-              events.
-            </p>
           </motion.div>
 
-          <motion.div
-            variants={fadeInUp}
-            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6"
-          >
-            {retreatDates.map((retreat, index) => (
-              <motion.div
-                key={index}
-                className={`bg-white/10 backdrop-blur-sm rounded-2xl p-8 cursor-pointer
-                          transition-all duration-300 ${
-                            selectedDate === retreat.date
-                              ? "ring-2 ring-white"
-                              : ""
-                          }`}
-                whileHover={{ scale: 1.03 }}
-                onClick={() => setSelectedDate(retreat.date)}
-              >
-                <h3 className="text-xl font-serif mb-2">{retreat.date}</h3>
-                <p className="text-white/70 text-sm">{retreat.availability}</p>
-              </motion.div>
-            ))}
-          </motion.div>
+          {Object.entries(retreatProgram).map(([day, activities]) => (
+            <motion.div key={day} variants={fadeInUp} className="mb-12">
+              <h3 className="text-2xl font-serif mb-6 uppercase">{day}</h3>
+              <div className="space-y-8">
+                {activities.map((activity, index) => (
+                  <div
+                    key={index}
+                    className="bg-white/10 backdrop-blur-sm rounded-2xl p-8"
+                  >
+                    <h4 className="text-xl font-serif mb-2">{activity.time}</h4>
+                    <h5 className="text-lg mb-2 text-white/90">
+                      {activity.activity}
+                    </h5>
+                    <p className="text-white/70 mb-2 italic">
+                      {activity.location}
+                    </p>
+                    <p className="text-white/80">{activity.description}</p>
+                  </div>
+                ))}
+              </div>
+            </motion.div>
+          ))}
 
           <motion.div variants={fadeInUp} className="text-center mt-12">
             <motion.button
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
-              className="bg-white text-[#1B392A] px-12 py-5 rounded-full text-lg
-                       hover:bg-opacity-90 transition-all duration-300 shadow-xl hover:shadow-2xl"
+              className="bg-white text-[#1B392A] px-12 py-5 rounded-full text-lg hover:bg-opacity-90 transition-all duration-300 shadow-xl hover:shadow-2xl"
             >
               Request to Book
             </motion.button>

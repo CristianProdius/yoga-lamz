@@ -67,7 +67,7 @@ const BookPage = () => {
           >
             <div className="aspect-[3/4] rounded-3xl overflow-hidden shadow-2xl transform rotate-3 hover:rotate-0 transition-transform duration-500">
               <Image
-                src="/book1.png" // Replace with actual book cover
+                src="/book1.webp" // Replace with actual book cover
                 alt="August Fifteenth Book Cover"
                 fill
                 className="object-cover"
@@ -155,7 +155,7 @@ const BookPage = () => {
                   transition={{ duration: 0.3 }}
                 >
                   <Image
-                    src={`/crete-${name}.jpeg`} // Replace with actual images
+                    src={`/crete-${name}.webp`} // Replace with actual images
                     alt={`Cretan ${
                       name.charAt(0).toUpperCase() + name.slice(1)
                     } Scene`}
