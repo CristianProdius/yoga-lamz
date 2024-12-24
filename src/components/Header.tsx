@@ -4,7 +4,7 @@ import { useState, useEffect } from "react";
 
 export default function Header() {
   const [isScrolled, setIsScrolled] = useState(false);
-  const [isMobileMenuOpen] = useState(false);
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -45,18 +45,7 @@ export default function Header() {
           ))}
         </nav>
 
-        {/*<div className="flex items-center gap-3 sm:gap-6">
-          <button className="hidden sm:flex items-center bg-[#e8ebe3] hover:bg-[#dfe2d8] transition-all duration-300 px-5 py-2.5 rounded-full hover:shadow-md active:scale-95">
-            <Image
-              src="/login.webp"
-              alt="Profile"
-              width={24}
-              height={32}
-              className="rounded-full"
-            />
-            <span className="ml-2 text-[15px] font-medium">Log In</span>
-          </button>
-
+        <div className="flex items-center gap-3 sm:gap-6">
           <button
             className="md:hidden p-2"
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
@@ -79,7 +68,7 @@ export default function Header() {
               />
             </svg>
           </button>
-        </div>*/}
+        </div>
       </div>
 
       <div
@@ -93,20 +82,11 @@ export default function Header() {
               key={item}
               href={`/${item.toLowerCase()}`}
               className="py-3 text-[#1a2e1a] hover:bg-[#e8ebe3] px-4 rounded-lg transition-colors"
+              onClick={() => setIsMobileMenuOpen(false)} // Close menu on link click
             >
               {item}
             </Link>
           ))}
-          {/* <button className="mt-3 w-full flex items-center justify-center bg-[#e8ebe3] hover:bg-[#dfe2d8] transition-all duration-300 px-5 py-2.5 rounded-lg sm:hidden">
-            <Image
-              src="/login.webp"
-              alt="Profile"
-              width={24}
-              height={24}
-              className="rounded-full"
-            />
-            <span className="ml-2 text-[15px] font-medium">Log In</span>
-          </button>*/}
         </nav>
       </div>
     </header>

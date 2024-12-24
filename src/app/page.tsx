@@ -8,7 +8,7 @@ import Footer from "@/components/Footer";
 import Header from "@/components/Header";
 import Hero from "@/components/Hero";
 import BookPromoSection from "@/components/Promo";
-import ReviewsSection from "@/components/Reviews";
+
 import ServicesSection from "@/components/Services";
 import InstructorSection from "@/components/Team";
 
@@ -82,7 +82,7 @@ export default function Home() {
         <Hero />
         <ServicesSection />
         <InstructorSection />
-        <ReviewsSection />
+
         <BookPromoSection />
         <ContactSection />
         <FAQ />

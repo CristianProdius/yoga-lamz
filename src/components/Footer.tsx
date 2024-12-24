@@ -196,40 +196,6 @@ const Footer: FC<FooterProps> = ({ currentYear = 2024 }) => {
             © {currentYear} All rights reserved. The Cretan Earth™
           </div>
           <div className="flex flex-col md:flex-row gap-4 md:gap-8 mt-6 md:mt-0 text-center md:text-left">
-            {/* <Link href="/privacy-policy">
-              <span
-                onMouseEnter={() => setIsHovered("Privacy Policy")}
-                onMouseLeave={() => setIsHovered("")}
-                className="relative text-gray-600 hover:text-[#1B392A] transition-colors duration-300"
-              >
-                Privacy Policy
-                <span
-                  className={`absolute bottom-0 left-0 w-full h-0.5 bg-[#1B392A] transform origin-left
-                               transition-transform duration-300 ${
-                                 isHovered === "Privacy Policy"
-                                   ? "scale-x-100"
-                                   : "scale-x-0"
-                               }`}
-                />
-              </span>
-            </Link>
-            <Link href="/terms">
-              <span
-                onMouseEnter={() => setIsHovered("Terms")}
-                onMouseLeave={() => setIsHovered("")}
-                className="relative text-gray-600 hover:text-[#1B392A] transition-colors duration-300"
-              >
-                Terms
-                <span
-                  className={`absolute bottom-0 left-0 w-full h-0.5 bg-[#1B392A] transform origin-left
-                               transition-transform duration-300 ${
-                                 isHovered === "Terms"
-                                   ? "scale-x-100"
-                                   : "scale-x-0"
-                               }`}
-                />
-              </span>
-            </Link>*/}
             <Link href="#">
               <span
                 onMouseEnter={() => setIsHovered("Back to top")}
