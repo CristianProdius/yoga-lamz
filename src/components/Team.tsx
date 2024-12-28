@@ -18,7 +18,7 @@ const InstructorSection: FC = () => {
   };
 
   return (
-    <div className="bg-gradient-to-b from-[#f4f6ef] via-[#f8f9f5] to-[#f4f6ef]">
+    <div className="bg-gradient-to-b from-[#eaf3ce] via-[#f8f9f5] to-[#f4f6ef]">
       <section className="py-12 md:py-24 px-4 sm:px-8">
         <motion.div
           initial="hidden"
