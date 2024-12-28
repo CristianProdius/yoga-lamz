@@ -70,6 +70,7 @@ const BookPage = () => {
                 src="/book1.webp" // Replace with actual book cover
                 alt="August Fifteenth Book Cover"
                 fill
+                sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                 className="object-cover"
               />
             </div>
@@ -160,6 +161,7 @@ const BookPage = () => {
                       name.charAt(0).toUpperCase() + name.slice(1)
                     } Scene`}
                     fill
+                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                     className="object-cover"
                   />
                 </motion.div>

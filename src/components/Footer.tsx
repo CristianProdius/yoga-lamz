@@ -10,10 +10,32 @@ interface FooterProps {
 const Footer: FC<FooterProps> = ({ currentYear = 2024 }) => {
   const [email, setEmail] = useState("");
   const [isHovered, setIsHovered] = useState("");
+  const [status, setStatus] = useState<
+    "idle" | "loading" | "success" | "error"
+  >("idle");
 
-  const handleSubmit = (e: FormEvent) => {
+  const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
-    // Handle newsletter subscription
+    setStatus("loading");
+
+    try {
+      const response = await fetch("/api/subscribe", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ email }),
+      });
+
+      if (!response.ok) {
+        throw new Error("Subscription failed");
+      }
+
+      setEmail("");
+      setStatus("success");
+    } catch (error) {
+      setStatus("error");
+    }
   };
 
   const fadeInUp = {
@@ -66,27 +88,31 @@ const Footer: FC<FooterProps> = ({ currentYear = 2024 }) => {
                   placeholder="Enter your email"
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
-                  className="w-full bg-transparent border-b-2 border-black/20 pb-3 
-                           focus:outline-none focus:border-[#1B392A] transition-all
-                           duration-300 text-lg px-2"
+                  required
+                  className="w-full bg-transparent border-b-2 border-black/20 pb-3 focus:outline-none focus:border-[#1B392A] transition-all duration-300 text-lg px-2"
                 />
-                <div
-                  className="absolute bottom-0 left-0 w-0 h-0.5 bg-[#1B392A] 
-                              group-hover:w-full transition-all duration-300"
-                />
+                <div className="absolute bottom-0 left-0 w-0 h-0.5 bg-[#1B392A] group-hover:w-full transition-all duration-300" />
               </motion.div>
               <motion.button
+                type="submit"
+                disabled={status === "loading"}
                 whileHover={{
                   scale: 1.05,
                   boxShadow: "0 10px 30px rgba(27,57,42,0.2)",
                 }}
                 whileTap={{ scale: 0.95 }}
-                className="bg-[#1B392A] text-white px-10 py-4 rounded-full text-lg
-                         shadow-xl hover:shadow-2xl transition-all duration-500
-                         hover:bg-[#2A4F3A] w-full md:w-auto"
+                className="bg-[#1B392A] text-white px-10 py-4 rounded-full text-lg shadow-xl hover:shadow-2xl transition-all duration-500 hover:bg-[#2A4F3A] w-full md:w-auto"
               >
-                Subscribe
+                {status === "loading" ? "Subscribing..." : "Subscribe"}
               </motion.button>
+              {status === "success" && (
+                <p className="text-green-600">Successfully subscribed!</p>
+              )}
+              {status === "error" && (
+                <p className="text-red-600">
+                  Failed to subscribe. Please try again.
+                </p>
+              )}
             </form>
             <p className="text-sm text-gray-600 leading-relaxed">
               By subscribing you agree to our Privacy Policy and provide consent

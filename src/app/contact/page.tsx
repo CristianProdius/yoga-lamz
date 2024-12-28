@@ -1,17 +1,47 @@
 "use client";
 import { motion } from "framer-motion";
-import { useState, FormEvent } from "react";
+import { useState, FormEvent, useEffect } from "react";
 import Image from "next/image";
 import Footer from "@/components/Footer";
 import Header from "@/components/Header";
+import emailjs from "@emailjs/browser";
 
 const ContactPage = () => {
   const [formData, setFormData] = useState({
-    name: "",
-    email: "",
-    subject: "",
+    user_name: "",
+    user_email: "",
     message: "",
   });
+
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitStatus, setSubmitStatus] = useState<
+    "idle" | "success" | "error"
+  >("idle");
+
+  useEffect(() => {
+    emailjs.init(process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY!);
+  }, []);
+
+  const handleSubmit = async (e: FormEvent) => {
+    e.preventDefault();
+    setIsSubmitting(true);
+    setSubmitStatus("idle");
+
+    try {
+      await emailjs.send(
+        process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID!,
+        process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID!,
+        formData
+      );
+      setSubmitStatus("success");
+      setFormData({ user_name: "", user_email: "", message: "" });
+    } catch (error) {
+      console.error("Email sending failed:", error);
+      setSubmitStatus("error");
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
 
   const fadeInUp = {
     hidden: { opacity: 0, y: 20 },
@@ -24,11 +54,6 @@ const ContactPage = () => {
         staggerChildren: 0.2,
       },
     },
-  };
-
-  const handleSubmit = async (e: FormEvent) => {
-    e.preventDefault();
-    // Handle form submission
   };
 
   return (
@@ -87,10 +112,11 @@ const ContactPage = () => {
                   >
                     <input
                       type="text"
+                      name="user_name"
                       placeholder="Your Name"
-                      value={formData.name}
+                      value={formData.user_name}
                       onChange={(e) =>
-                        setFormData({ ...formData, name: e.target.value })
+                        setFormData({ ...formData, user_name: e.target.value })
                       }
                       className="w-full py-4 bg-transparent border-b-2 border-[#1a2e1a]/20 
                                outline-none text-lg transition-all duration-300 
@@ -105,10 +131,11 @@ const ContactPage = () => {
                   >
                     <input
                       type="email"
+                      name="user_email"
                       placeholder="Your Email"
-                      value={formData.email}
+                      value={formData.user_email}
                       onChange={(e) =>
-                        setFormData({ ...formData, email: e.target.value })
+                        setFormData({ ...formData, user_email: e.target.value })
                       }
                       className="w-full py-4 bg-transparent border-b-2 border-[#1a2e1a]/20 
                                outline-none text-lg transition-all duration-300 
@@ -122,25 +149,8 @@ const ContactPage = () => {
                   whileHover={{ scale: 1.01 }}
                   className="relative group"
                 >
-                  <input
-                    type="text"
-                    placeholder="Subject"
-                    value={formData.subject}
-                    onChange={(e) =>
-                      setFormData({ ...formData, subject: e.target.value })
-                    }
-                    className="w-full py-4 bg-transparent border-b-2 border-[#1a2e1a]/20 
-                             outline-none text-lg transition-all duration-300 
-                             group-hover:border-[#1a2e1a] px-2"
-                    required
-                  />
-                </motion.div>
-
-                <motion.div
-                  whileHover={{ scale: 1.01 }}
-                  className="relative group"
-                >
                   <textarea
+                    name="message"
                     placeholder="Your Message"
                     rows={6}
                     value={formData.message}
@@ -156,14 +166,38 @@ const ContactPage = () => {
 
                 <motion.button
                   type="submit"
+                  disabled={isSubmitting}
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
-                  className="bg-[#1a2e1a] text-white px-12 py-5 rounded-full text-lg
+                  className={`bg-[#1a2e1a] text-white px-12 py-5 rounded-full text-lg
                            shadow-xl hover:shadow-2xl transition-all duration-500
-                           hover:bg-[#2a3f2a] w-full sm:w-auto"
+                           hover:bg-[#2a3f2a] w-full sm:w-auto ${
+                             isSubmitting ? "opacity-70 cursor-not-allowed" : ""
+                           }`}
                 >
-                  Send Message
+                  {isSubmitting ? "Sending..." : "Send Message"}
                 </motion.button>
+
+                {submitStatus === "success" && (
+                  <motion.p
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    className="text-green-600 text-center"
+                  >
+                    Thank you for your message! We&apos;ll get back to you soon.
+                  </motion.p>
+                )}
+
+                {submitStatus === "error" && (
+                  <motion.p
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    className="text-red-600 text-center"
+                  >
+                    There was an error sending your message. Please try again
+                    later.
+                  </motion.p>
+                )}
               </form>
             </motion.div>
 
@@ -174,6 +208,7 @@ const ContactPage = () => {
                   src="/crete-yoga.webp" // Replace with actual image
                   alt="Cretan Landscape"
                   fill
+                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                   className="object-cover"
                 />
               </div>

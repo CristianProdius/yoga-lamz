@@ -108,7 +108,7 @@ export default function Hero() {
             {/* Video element */}
             <video
               ref={videoRef}
-              src="/main_video.mp4"
+              src="/main_video.webm"
               className="object-cover w-full h-full transform group-hover:scale-105 transition-all duration-700 max-w-full"
               autoPlay
               loop

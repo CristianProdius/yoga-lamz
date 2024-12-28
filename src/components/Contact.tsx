@@ -5,21 +5,6 @@ import { useInView } from "react-intersection-observer";
 import Image from "next/image";
 import emailjs from "@emailjs/browser";
 
-{
-  /*Create an EmailJS account and:
-Create an Email Service (get SERVICE_ID)
-Create an Email Template (get TEMPLATE_ID)
-Get your Public Key from the Account page
-Create an email template in EmailJS dashboard using these variables:
-{{user_name}}
-{{user_email}}
-{{message}}
-Replace the placeholders in the code:
-YOUR_PUBLIC_KEY
-YOUR_SERVICE_ID
-YOUR_TEMPLATE_ID */
-}
-
 const ContactSection: FC = () => {
   const [formData, setFormData] = useState({
     name: "",
@@ -37,11 +22,8 @@ const ContactSection: FC = () => {
     threshold: 0.1,
   });
 
-  // Initialize EmailJS
   useEffect(() => {
-    emailjs.init({
-      publicKey: "YOUR_PUBLIC_KEY", // Get this from EmailJS dashboard
-    });
+    emailjs.init(process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY!);
   }, []);
 
   const handleSubmit = async (e: FormEvent) => {
@@ -51,11 +33,10 @@ const ContactSection: FC = () => {
 
     try {
       await emailjs.sendForm(
-        "YOUR_SERVICE_ID", // Get from EmailJS Email Services
-        "YOUR_TEMPLATE_ID", // Get from EmailJS Email Templates
+        process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID!,
+        process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID!,
         e.target as HTMLFormElement
       );
-
       setSubmitStatus("success");
       setFormData({ name: "", email: "", message: "" });
     } catch (error) {
@@ -80,9 +61,9 @@ const ContactSection: FC = () => {
         variants={fadeInUp}
         className="max-w-7xl mx-auto px-6 lg:px-8"
       >
-        <div className="flex flex-col lg:flex-row items-center gap-20">
+        <div className="flex flex-col lg:flex-row items-center gap-6 lg:gap-20">
           {/* Image Gallery */}
-          <motion.div variants={fadeInUp} className="flex-1 relative">
+          <motion.div variants={fadeInUp} className="hidden lg:block lg:w-1/2">
             <div className="grid grid-cols-2 lg:grid-cols-3 gap-6">
               <motion.div
                 whileHover={{ scale: 1.02 }}
@@ -90,9 +71,10 @@ const ContactSection: FC = () => {
               >
                 <div className="aspect-square overflow-hidden rounded-3xl shadow-2xl relative">
                   <Image
-                    src="/yoga-woman.webp" // Replace with actual retreat image
+                    src="/yoga-woman.webp"
                     alt="Yoga in Crete"
                     fill
+                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                     className="object-cover transform hover:scale-105 transition-transform duration-700"
                   />
                 </div>
@@ -106,9 +88,10 @@ const ContactSection: FC = () => {
                   >
                     <div className="aspect-square relative">
                       <Image
-                        src={`/crete-${activity}.webp`} // Replace with actual activity images
+                        src={`/crete-${activity}.webp`}
                         alt={`Cretan Earth ${activity}`}
                         fill
+                        sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                         className="object-cover transform hover:scale-105 transition-transform duration-700"
                       />
                     </div>
@@ -119,7 +102,10 @@ const ContactSection: FC = () => {
           </motion.div>
 
           {/* Contact Form */}
-          <motion.div variants={fadeInUp} className="flex-1 w-full max-w-xl">
+          <motion.div
+            variants={fadeInUp}
+            className="w-full lg:w-1/2 max-w-xl mx-auto"
+          >
             <motion.h2
               variants={fadeInUp}
               className="text-4xl md:text-5xl font-light mb-8 text-[#1a2e1a] tracking-tight"

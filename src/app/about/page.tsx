@@ -80,6 +80,7 @@ const AboutPage = () => {
                 src="/agapi-profile.webp"
                 alt="Agapi Kefalogianni"
                 fill
+                sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                 className="object-cover rounded-3xl"
               />
             </div>
@@ -103,14 +104,16 @@ const AboutPage = () => {
                   src="/crete-nature.webp" // Replace with actual image
                   alt="Yoga in Nature"
                   fill
+                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                   className="object-cover"
                 />
               </div>
-              <div className="aspect-square rounded-2xl overflow-hidden shadow-xl relative">
+              <div className="aspect-square rounded-2xl overflow-hidden shadow-xl relative ">
                 <Image
                   src="/crete-meditation.webp" // Replace with actual image
                   alt="Cretan Landscape"
                   fill
+                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                   className="object-cover"
                 />
               </div>
@@ -176,6 +179,7 @@ const AboutPage = () => {
                 src="/agapi-photo.webp" // Replace with actual image
                 alt="August Fifteenth Book Cover"
                 fill
+                sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                 className="object-cover"
               />
             </div>
