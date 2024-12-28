@@ -34,6 +34,7 @@ const Footer: FC<FooterProps> = ({ currentYear = 2024 }) => {
       setEmail("");
       setStatus("success");
     } catch (error) {
+      console.error("Subscription failed:", error);
       setStatus("error");
     }
   };
