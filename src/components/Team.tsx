@@ -59,9 +59,18 @@ const InstructorSection: FC = () => {
               <h3 className="text-2xl md:text-4xl font-serif text-[#1a2e1a] leading-relaxed">
                 Hi, I&apos;m <span className="italic">Agapi</span>
               </h3>
-              <div className="space-y-4 md:space-y-6 text-[#1a2e1a]/80">
-                <p className="text-base md:text-lg leading-relaxed">
-                  {/* Your existing text */}
+              <div className="space-y-6 text-[#1a2e1a]/80">
+                <p className="text-lg leading-relaxed">
+                  Born and raised on the stunning island of Crete, I grew up in
+                  a lively, traditional Cretan family with two sisters and two
+                  brothers. Sharing and togetherness were at the heart of my
+                  childhood, shaped by the raw beauty of the island.
+                </p>
+                <p className="text-lg leading-relaxed">
+                  Before yoga became my passion, I spent years immersed in
+                  ballet, training in the Royal Academy of Dancing and Modern
+                  Theater Dance. Dance was my first love—a liberating art form
+                  that brought pure joy to my body and soul.
                 </p>
               </div>
             </div>
